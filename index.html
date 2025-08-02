@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Flow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="notification" id="saveNotification">
+        <i class="fas fa-check-circle"></i> Progress saved successfully!
+    </div>
+    
+    <div class="notification warning" id="deleteNotification">
+        <i class="fas fa-exclamation-triangle"></i> Account data has been deleted
+    </div>
+    
+    <div class="notification info" id="aiNotification">
+        <i class="fas fa-robot"></i> Generating personalized recommendations...
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-chart-line"></i> Global Financial Advisor</h1>
+            <p>Your personal financial dashboard for global financial management</p>
+        </header>
+        
+        <div class="content">
+            <div class="form-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="account"><i class="fas fa-user-circle"></i> Account</div>
+                    <div class="tab" data-tab="income"><i class="fas fa-money-bill-wave"></i> Income</div>
+                    <div class="tab" data-tab="expenses"><i class="fas fa-chart-pie"></i> Expenses</div>
+                    <div class="tab" data-tab="goals"><i class="fas fa-bullseye"></i> Goals</div>
+                    <div class="tab" data-tab="review"><i class="fas fa-clipboard-check"></i> Review</div>
+                </div>
+                
+                <!-- Account Section -->
+                <div class="form-section active" id="account-section">
+                    <h2><i class="fas fa-user"></i> Account Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <div class="input-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="fullName" placeholder="Enter your full name">
+                        </div>
+                        <div class="validation-error" id="name-error">Please enter your full name</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="validation-error" id="email-error">Please enter a valid email address</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country">Country of Residence</label>
+                        <select id="country" required>
+                            <option value="">Select your country</option>
+                            <option value="US">United States (USD)</option>
+                            <option value="UK">United Kingdom (GBP)</option>
+                            <option value="CA">Canada (CAD)</option>
+                            <option value="AU">Australia (AUD)</option>
+                            <option value="IN">India (INR)</option>
+                            <option value="DE">Germany (EUR)</option>
+                            <option value="FR">France (EUR)</option>
+                            <option value="JP">Japan (JPY)</option>
+                            <option value="CN">China (CNY)</option>
+                            <option value="BR">Brazil (BRL)</option>
+                            <option value="ZA">South Africa (ZAR)</option>
+                            <option value="RU">Russia (RUB)</option>
+                            <option value="MX">Mexico (MXN)</option>
+                            <option value="ES">Spain (EUR)</option>
+                            <option value="IT">Italy (EUR)</option>
+                            <option value="NL">Netherlands (EUR)</option>
+                            <option value="SE">Sweden (SEK)</option>
+                            <option value="CH">Switzerland (CHF)</option>
+                            <option value="SG">Singapore (SGD)</option>
+                            <option value="KR">South Korea (KRW)</option>
+                            <option value="AE">United Arab Emirates (AED)</option>
+                            <option value="SA">Saudi Arabia (SAR)</option>
+                            <option value="TR">Turkey (TRY)</option>
+                            <option value="ID">Indonesia (IDR)</option>
+                            <option value="TH">Thailand (THB)</option>
+                            <option value="AR">Argentina (ARS)</option>
+                            <option value="CL">Chile (CLP)</option>
+                            <option value="CO">Colombia (COP)</option>
+                            <option value="EG">Egypt (EGP)</option>
+                            <option value="NG">Nigeria (NGN)</option>
+                            <option value="KE">Kenya (KES)</option>
+                            <option value="MY">Malaysia (MYR)</option>
+                            <option value="PH">Philippines (PHP)</option>
+                            <option value="VN">Vietnam (VND)</option>
+                            <option value="BD">Bangladesh (BDT)</option>
+                            <option value="PK">Pakistan (PKR)</option>
+                            <option value="PL">Poland (PLN)</option>
+                            <option value="HU">Hungary (HUF)</option>
+                            <option value="RO">Romania (RON)</option>
+                            <option value="CZ">Czech Republic (CZK)</option>
+                            <option value="GR">Greece (EUR)</option>
+                            <option value="PT">Portugal (EUR)</option>
+                            <option value="BE">Belgium (EUR)</option>
+                            <option value="AT">Austria (EUR)</option>
+                            <option value="DK">Denmark (DKK)</option>
+                            <option value="NO">Norway (NOK)</option>
+                            <option value="FI">Finland (EUR)</option>
+                            <option value="IL">Israel (ILS)</option>
+                            <option value="NZ">New Zealand (NZD)</option>
+                            <option value="CR">Costa Rica (CRC)</option>
+                            <option value="DO">Dominican Republic (DOP)</option>
+                            <option value="EC">Ecuador (USD)</option>
+                            <option value="GT">Guatemala (GTQ)</option>
+                            <option value="HN">Honduras (HNL)</option>
+                            <option value="JM">Jamaica (JMD)</option>
+                            <option value="PA">Panama (PAB)</option>
+                            <option value="PE">Peru (PEN)</option>
+                            <option value="PR">Puerto Rico (USD)</option>
+                            <option value="UY">Uruguay (UYU)</option>
+                            <option value="VE">Venezuela (VES)</option>
+                            <option value="GH">Ghana (GHS)</option>
+                            <option value="MA">Morocco (MAD)</option>
+                            <option value="TZ">Tanzania (TZS)</option>
+                            <option value="UG">Uganda (UGX)</option>
+                            <option value="BH">Bahrain (BHD)</option>
+                            <option value="IQ">Iraq (IQD)</option>
+                            <option value="JO">Jordan (JOD)</option>
+                            <option value="KW">Kuwait (KWD)</option>
+                            <option value="LB">Lebanon (LBP)</option>
+                            <option value="OM">Oman (OMR)</option>
+                            <option value="QA">Qatar (QAR)</option>
+                            <option value="LK">Sri Lanka (LKR)</option>
+                            <option value="NP">Nepal (NPR)</option>
+                            <option value="MM">Myanmar (MMK)</option>
+                            <option value="KH">Cambodia (KHR)</option>
+                            <option value="LA">Laos (LAK)</option>
+                            <option value="MN">Mongolia (MNT)</option>
+                            <option value="BT">Bhutan (BTN)</option>
+                            <option value="MV">Maldives (MVR)</option>
+                        </select>
+                        <div class="validation-error" id="country-error">Please select your country</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password
+                            <span class="tooltip">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="tooltiptext">Password must be at least 8 characters with uppercase, lowercase, number, and special character</span>
+                            </span>
+                        </label>
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="Create a password">
+                            <span class="password-toggle" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        <div class="validation-error" id="password-error">Password must meet all requirements</div>
+                        
+                        <div class="password-requirements">
+                            <ul>
+                                <li id="req-length"><i class="fas fa-circle"></i> At least 8 characters</li>
+                                <li id="req-upper"><i class="fas fa-circle"></i> At least one uppercase letter</li>
+                                <li id="req-lower"><i class="fas fa-circle"></i> At least one lowercase letter</li>
+                                <li id="req-number"><i class="fas fa-circle"></i> At least one number</li>
+                                <li id="req-special"><i class="fas fa-circle"></i> At least one special character</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="password-generator">
+                            <input type="text" id="generatedPassword" placeholder="Generated password" readonly>
+                            <button id="generatePasswordBtn"><i class="fas fa-sync-alt"></i> Generate</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirmPassword" placeholder="Confirm your password">
+                            <span class="password-toggle" id="toggleConfirmPassword">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        <div class="validation-error" id="confirm-error">Passwords do not match</div>
+                    </div>
+                    
+                    <!-- Delete Account Button -->
+                    <button class="btn-delete" id="deleteAccountBtn">
+                        <i class="fas fa-trash-alt"></i> Delete Account
+                    </button>
+                    
+                    <div class="btn-group">
+                        <div></div> <!-- Spacer -->
+                        <button class="btn-save" id="saveAccountBtn"><i class="fas fa-save"></i> Save Progress</button>
+                        <button class="btn-next" data-next="income">Continue to Income <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Income Section -->
+                <div class="form-section" id="income-section">
+                    <h2><i class="fas fa-money-bill"></i> Income Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="employmentStatus">Employment Status</label>
+                        <select id="employmentStatus">
+                            <option value="">Select your employment status</option>
+                            <option value="employed">Employed Full-Time</option>
+                            <option value="part-time">Employed Part-Time</option>
+                            <option value="self-employed">Self-Employed</option>
+                            <option value="unemployed">Unemployed</option>
+                            <option value="retired">Retired</option>
+                            <option value="student">Student</option>
+                        </select>
+                        <div class="validation-error" id="employment-error">Please select your employment status</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="salary">Monthly Income (<span class="currency-symbol">$</span>)</label>
+                        <div class="input-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="number" id="salary" placeholder="Enter your monthly income" value="4500">
+                        </div>
+                        <div class="validation-error" id="salary-error">Please enter a valid monthly income</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="otherIncome">Other Monthly Income (<span class="currency-symbol">$</span>)</label>
+                        <div class="input-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="number" id="otherIncome" placeholder="Investments, side jobs, etc." value="500">
+                        </div>
+                        <div class="form-note">Enter additional income from investments, rentals, or other sources</div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn-prev" data-prev="account"><i class="fas fa-arrow-left"></i> Back to Account</button>
+                        <button class="btn-save" id="saveIncomeBtn"><i class="fas fa-save"></i> Save Progress</button>
+                        <button class="btn-next" data-next="expenses">Continue to Expenses <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Expenses Section -->
+                <div class="form-section" id="expenses-section">
+                    <h2><i class="fas fa-chart-line"></i> Monthly Expenses</h2>
+                    
+                    <div class="form-group">
+                        <label>Housing Situation</label>
+                        <select id="housingStatus">
+                            <option value="">Select your housing situation</option>
+                            <option value="rent" selected>Renting</option>
+                            <option value="own">Homeowner</option>
+                            <option value="family">Living with Family</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="validation-error" id="housing-error">Please select your housing situation</div>
+                    </div>
+                    
+                    <div id="rentSection">
+                        <div class="form-group">
+                            <label for="monthlyRent">Monthly Rent (<span class="currency-symbol">$</span>)</label>
+                            <div class="input-icon">
+                                <i class="fas fa-home"></i>
+                                <input type="number" id="monthlyRent" placeholder="Enter monthly rent" value="1200">
+                            </div>
+                            <div class="validation-error" id="rent-error">Please enter monthly rent amount</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="utilities">Monthly Utilities (<span class="currency-symbol">$</span>)</label>
+                        <div class="input-icon">
+                            <i class="fas fa-bolt"></i>
+                            <input type="number" id="utilities" placeholder="Electricity, water, gas, etc." value="250">
+                        </div>
+                        <div class="validation-error" id="utilities-error">Please enter utilities amount</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="groceries">Groceries & Dining (<span class="currency-symbol">$</span>)</label>
+                        <div class="input-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <input type="number" id="groceries" placeholder="Monthly food expenses" value="600">
+                        </div>
+                        <div class="validation-error" id="groceries-error">Please enter food expenses</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transportation">Transportation (<span class="currency-symbol">$</span>)</label>
+                        <div class="input-icon">
+                            <i class="fas fa-car"></i>
+                            <input type="number" id="transportation" placeholder="Car payment, gas, public transit" value="350">
+                        </div>
+                        <div class="validation-error" id="transport-error">Please enter transportation costs</div>
+                    </div>
+                    
+                    <div class="financial-health">
+                        <div class="health-title">
+                            <i class="fas fa-heartbeat"></i> Financial Health Indicator
+                        </div>
+                        <p>Based on your income and expenses, your financial health is:</p>
+                        <div class="health-meter">
+                            <div class="health-level" id="health-meter"></div>
+                            <div class="health-percentage" id="health-percentage">60%</div>
+                        </div>
+                        <div class="health-labels">
+                            <span>Critical</span>
+                            <span>Improving</span>
+                            <span>Healthy</span>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn-prev" data-prev="income"><i class="fas fa-arrow-left"></i> Back to Income</button>
+                        <button class="btn-save" id="saveExpensesBtn"><i class="fas fa-save"></i> Save Progress</button>
+                        <button class="btn-next" data-next="goals">Set Your Goals <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Goals Section -->
+                <div class="form-section" id="goals-section">
+                    <h2><i class="fas fa-bullseye"></i> Financial Goals</h2>
+                    <p>Select your primary financial goal to help us personalize your experience:</p>
+                    
+                    <div class="goal-cards">
+                        <div class="goal-card" data-goal="increase-income">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Increase Income</h3>
+                            <p>Boost your earnings through career growth or side hustles</p>
+                            <div class="checkmark"><i class="fas fa-check"></i></div>
+                        </div>
+                        
+                        <div class="goal-card" data-goal="budget-management">
+                            <i class="fas fa-wallet"></i>
+                            <h3>Budget Management</h3>
+                            <p>Track spending and create an effective budget plan</p>
+                            <div class="checkmark"><i class="fas fa-check"></i></div>
+                        </div>
+                        
+                        <div class="goal-card selected" data-goal="debt-reduction">
+                            <i class="fas fa-credit-card"></i>
+                            <h3>Debt Reduction</h3>
+                            <p>Pay off credit cards, loans, and other debts</p>
+                            <div class="checkmark"><i class="fas fa-check"></i></div>
+                        </div>
+                        
+                        <div class="goal-card" data-goal="savings-goal">
+                            <i class="fas fa-piggy-bank"></i>
+                            <h3>Savings Goal</h3>
+                            <p>Build emergency funds or save for big purchases</p>
+                            <div class="checkmark"><i class="fas fa-check"></i></div>
+                        </div>
+                        
+                        <div class="goal-card" data-goal="investment-strategy">
+                            <i class="fas fa-chart-pie"></i>
+                            <h3>Investment Strategy</h3>
+                            <p>Grow wealth through stocks, bonds, or real estate</p>
+                            <div class="checkmark"><i class="fas fa-check"></i></div>
+                        </div>
+                        
+                        <div class="goal-card" data-goal="retirement-planning">
+                            <i class="fas fa-umbrella-beach"></i>
+                            <h3>Retirement Planning</h3>
+                            <p>Prepare for your financial future and retirement</p>
+                            <div class="checkmark"><i class="fas fa-check"></i></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 25px;">
+                        <label for="specific-goal">Specific Goal Details (Optional)</label>
+                        <textarea id="specific-goal" placeholder="Tell us more about your specific financial goals...">I want to pay off $15,000 in credit card debt within 2 years while saving for a down payment on a house.</textarea>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn-prev" data-prev="expenses"><i class="fas fa-arrow-left"></i> Back to Expenses</button>
+                        <button class="btn-save" id="saveGoalsBtn"><i class="fas fa-save"></i> Save Progress</button>
+                        <button class="btn-next" data-next="review">Review & Submit <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Review Section -->
+                <div class="form-section" id="review-section">
+                    <h2><i class="fas fa-clipboard-list"></i> Review Your Information</h2>
+                    
+                    <div class="preview-content" id="review-content">
+                        <!-- Preview content will be inserted here by JavaScript -->
+                    </div>
+                    
+                    <div class="financial-health">
+                        <div class="health-title">
+                            <i class="fas fa-piggy-bank"></i> Financial Summary
+                        </div>
+                        <div id="financial-summary">
+                            <!-- Financial summary will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <div class="groupie">
+                        <label for="agreement">
+                            <input type="checkbox" id="agreement" required checked>
+                            I confirm that the information provided is accurate and agree to the <a href="#" style="color:#3498db">terms of service</a> and <a href="#" style="color:#3498db">privacy policy</a>.
+                        </label>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn-prev" data-prev="goals"><i class="fas fa-arrow-left"></i> Back to Goals</button>
+                        <button class="btn-save" id="saveReviewBtn"><i class="fas fa-save"></i> Save Progress</button>
+                        <button class="btn-submit" id="submitBtn">Create Account</button>
+                    </div>
+                </div>
+                
+                <!-- Success Message -->
+                <div class="success-message" id="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <h2>Account Created Successfully!</h2>
+                    <p>Your financial account has been set up with the information you provided.</p>
+                    <p>You can now access your personalized financial advisor dashboard.</p>
+                    <button class="btn-submit" id="viewDashboard" style="margin-top: 30px; width: 100%; max-width: 300px;">
+                        <i class="fas fa-tachometer-alt"></i> View Advisor Dashboard
+                    </button>
+                </div>
+            </div>
+            
+            <div class="preview-container">
+                <div class="preview-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Financial Summary Preview</h3>
+                    <p>Your information will appear here</p>
+                </div>
+                
+                <div class="preview-content" id="preview-content">
+                    <p>Complete the form sections to see your financial overview and personalized insights.</p>
+                    <div class="preview-item" style="margin-top: 20px;">
+                        <div class="preview-label"><i class="fas fa-lightbulb"></i> Tip</div>
+                        <div class="preview-value">Aim to save at least 20% of your monthly income for a healthy financial future.</div>
+                    </div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Dashboard Container -->
+    <div class="dashboard-container" id="dashboardContainer">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1><i class="fas fa-chart-line"></i> Financial Advisor Dashboard</h1>
+                <p>Personalized financial insights for your global finances</p>
+            </div>
+            <div class="user-info">
+                <h3 id="dashboard-name">John Smith</h3>
+                <p id="dashboard-email">john.smith@example.com</p>
+            </div>
+        </div>
+        
+        <div class="persistent-nav">
+            <a href="#" data-section="dashboard"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="#" data-section="budget"><i class="fas fa-chart-pie"></i> Budget</a>
+            <a href="#" data-section="savings"><i class="fas fa-piggy-bank"></i> Savings</a>
+            <a href="#" data-section="investments"><i class="fas fa-chart-line"></i> Investments</a>
+            <a href="#" data-section="debts"><i class="fas fa-credit-card"></i> Debts</a>
+            <a href="#" data-section="reports"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+            <a href="#" data-section="settings"><i class="fas fa-cog"></i> Settings</a>
+        </div>
+        
+        <!-- Dashboard Section -->
+        <div class="dashboard-section active" id="dashboard-section">
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h2>Income Overview</h2>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Primary Income</div>
+                        <div class="summary-value" id="primary-income">$4,500.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Additional Income</div>
+                        <div class="summary-value" id="additional-income">$500.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Income</div>
+                        <div class="summary-value" id="total-income">$5,000.00</div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-pie"></i>
+                        <h2>Expense Breakdown</h2>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Housing</div>
+                        <div class="summary-value" id="housing-expense">$1,200.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Utilities</div>
+                        <div class="summary-value" id="utilities-expense">$250.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Food</div>
+                        <div class="summary-value" id="food-expense">$600.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Transportation</div>
+                        <div class="summary-value" id="transport-expense">$350.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Expenses</div>
+                        <div class="summary-value" id="total-expenses">$2,400.00</div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-bullseye"></i>
+                        <h2>Financial Goal</h2>
+                    </div>
+                    <div class="goal-card-dashboard">
+                        <h3><i class="fas fa-credit-card"></i> Debt Reduction</h3>
+                        <p>I want to pay off $15,000 in credit card debt within 2 years while saving for a down payment on a house.</p>
+                    </div>
+                    
+                    <div class="dashboard-health-container">
+                        <div class="health-title">
+                            <i class="fas fa-heartbeat"></i> Financial Health
+                        </div>
+                        <div class="health-gauge">
+                            <div class="health-zones">
+                                <div class="health-zone zone-critical"></div>
+                                <div class="health-zone zone-warning"></div>
+                                <div class="health-zone zone-healthy"></div>
+                            </div>
+                            <div class="gauge-bg"></div>
+                            <div class="gauge-fill" id="gauge-fill"></div>
+                            <div class="gauge-center" id="gauge-value">60%</div>
+                            <div class="gauge-pointer" id="gauge-pointer"></div>
+                        </div>
+                        <div class="dashboard-health-labels">
+                            <span>Critical</span>
+                            <span>Improving</span>
+                            <span>Healthy</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar"></i>
+                        <h2>Income vs Expenses</h2>
+                    </div>
+                    <div class="chart-container" id="chart-container">
+                        <!-- Chart bars will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="net-worth-tracker">
+                <div class="net-worth-header">
+                    <h2><i class="fas fa-balance-scale"></i> Net Worth Tracker</h2>
+                    <button class="btn-dashboard btn-primary">
+                        <i class="fas fa-plus"></i> Add Asset
+                    </button>
+                </div>
+                
+                <div class="net-worth-chart">
+                    <!-- Net worth chart will be generated by JavaScript -->
+                </div>
+                
+                <div class="summary-item" style="margin-top: 20px;">
+                    <div class="summary-label">Total Assets</div>
+                    <div class="summary-value">$185,000</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Total Liabilities</div>
+                    <div class="summary-value">$45,000</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Net Worth</div>
+                    <div class="summary-value" style="color: #27ae60; font-size: 1.3rem;">$140,000</div>
+                </div>
+            </div>
+            
+            <div class="goals-section">
+                <div class="goals-header">
+                    <h2><i class="fas fa-bullseye"></i> Financial Goals Progress</h2>
+                    <button class="btn-dashboard btn-primary">
+                        <i class="fas fa-plus"></i> New Goal
+                    </button>
+                </div>
+                
+                <div class="goal-progress">
+                    <div class="progress-circle">
+                        <span>65%</span>
+                    </div>
+                    <div class="goal-details">
+                        <h3>Emergency Fund</h3>
+                        <p>Target: $10,000 | Current: $6,500</p>
+                        <div class="goal-actions">
+                            <button class="btn-dashboard btn-primary" style="padding: 8px 15px;">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="btn-dashboard btn-secondary" style="padding: 8px 15px;">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="goal-progress">
+                    <div class="progress-circle" style="background: conic-gradient(#f39c12 0% 35%, #ecf0f1 35% 100%);">
+                        <span>35%</span>
+                    </div>
+                    <div class="goal-details">
+                        <h3>Retirement Savings</h3>
+                        <p>Target: $500,000 | Current: $175,000</p>
+                        <div class="goal-actions">
+                            <button class="btn-dashboard btn-primary" style="padding: 8px 15px;">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="btn-dashboard btn-secondary" style="padding: 8px 15px;">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Recommendations Section -->
+            <div class="recommendations-container">
+                <div class="recommendations-header">
+                    <h2><i class="fas fa-robot"></i> Personalized Recommendations</h2>
+                    <button class="btn-dashboard btn-ai" id="generateRecommendations">
+                        <i class="fas fa-magic"></i> Generate Advice
+                    </button>
+                </div>
+                
+                <div class="ai-loading" id="aiLoading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Analyzing your financial data and goals...</p>
+                    <p>This may take a few moments</p>
+                </div>
+                
+                <div class="recommendations-list" id="recommendationsList">
+                    <!-- Recommendations will be inserted here by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Country-Specific Recommendations -->
+            <div class="country-recommendations">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-globe-americas"></i>
+                        <h2>Country-Specific Recommendations</h2>
+                    </div>
+                    <div id="country-recommendations-content">
+                        <div class="country-card">
+                            <div class="country-card-header">
+                                <i class="fas fa-lightbulb"></i>
+                                <h3>Tax Optimization Strategies</h3>
+                            </div>
+                            <div class="country-card-content">
+                                <ul>
+                                    <li>Maximize contributions to tax-advantaged accounts</li>
+                                    <li>Consider tax-loss harvesting for your investments</li>
+                                    <li>Review eligibility for tax credits and deductions</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="country-card">
+                            <div class="country-card-header">
+                                <i class="fas fa-hand-holding-usd"></i>
+                                <h3>Retirement Planning</h3>
+                            </div>
+                            <div class="country-card-content">
+                                <ul>
+                                    <li>Contribute to employer-sponsored retirement plans</li>
+                                    <li>Explore individual retirement accounts (IRAs)</li>
+                                    <li>Consider catch-up contributions if over 50</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="advisor-features">
+                <div class="feature-card">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Global Portfolio</h3>
+                    <p>Track and manage investments across international markets and currencies in one place.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>Currency Analysis</h3>
+                    <p>Monitor exchange rates and get insights on optimal times for currency conversions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Risk Management</h3>
+                    <p>Assess your financial risk profile and get strategies to protect your assets.</p>
+                </div>
+            </div>
+            
+            <div class="btn-group" style="justify-content: center; margin-top: 30px;">
+                <button class="btn-dashboard btn-primary"><i class="fas fa-file-pdf"></i> Export Report</button>
+                <button class="btn-dashboard btn-secondary" id="backToForm"><i class="fas fa-arrow-left"></i> Back to Setup</button>
+            </div>
+        </div>
+        
+        <!-- Budget Section -->
+        <div class="dashboard-section" id="budget-section">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> Budget Management</h2>
+            <p>Track and manage your monthly budget allocations.</p>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h2>Monthly Budget Allocation</h2>
+                </div>
+                <div class="chart-container" id="budget-chart">
+                    <!-- Budget chart will be generated here -->
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>Budget Tips</h2>
+                </div>
+                <div class="recommendations-list">
+                    <div class="recommendation-item">
+                        <div class="recommendation-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="recommendation-content">
+                            <h4>50/30/20 Rule</h4>
+                            <p>Allocate 50% of income to needs, 30% to wants, and 20% to savings and debt repayment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Savings Section -->
+        <div class="dashboard-section" id="savings-section">
+            <h2 class="section-title"><i class="fas fa-piggy-bank"></i> Savings</h2>
+            <p>Track your savings goals and progress.</p>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="fas fa-bullseye"></i>
+                    <h2>Savings Goals</h2>
+                </div>
+                <div class="goal-progress">
+                    <div class="progress-circle">
+                        <span>45%</span>
+                    </div>
+                    <div class="goal-details">
+                        <h3>Vacation Fund</h3>
+                        <p>Target: $5,000 | Current: $2,250</p>
+                    </div>
+                </div>
+                
+                <div class="goal-progress">
+                    <div class="progress-circle" style="background: conic-gradient(#2ecc71 0% 75%, #ecf0f1 75% 100%);">
+                        <span>75%</span>
+                    </div>
+                    <div class="goal-details">
+                        <h3>Home Down Payment</h3>
+                        <p>Target: $30,000 | Current: $22,500</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Investments Section -->
+        <div class="dashboard-section" id="investments-section">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> Investments</h2>
+            <p>Manage your investment portfolio.</p>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="fas fa-chart-pie"></i>
+                    <h2>Portfolio Allocation</h2>
+                </div>
+                <div class="chart-container" id="portfolio-chart">
+                    <!-- Portfolio chart will be generated here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Debts Section -->
+        <div class="dashboard-section" id="debts-section">
+            <h2 class="section-title"><i class="fas fa-credit-card"></i> Debts</h2>
+            <p>Manage and track your debt repayment.</p>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h2>Debt Overview</h2>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Credit Card Debt</div>
+                    <div class="summary-value">$8,500</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Student Loans</div>
+                    <div class="summary-value">$25,000</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Auto Loan</div>
+                    <div class="summary-value">$12,000</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Total Debt</div>
+                    <div class="summary-value" style="color: #e74c3c;">$45,500</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Reports Section -->
+        <div class="dashboard-section" id="reports-section">
+            <h2 class="section-title"><i class="fas fa-file-invoice-dollar"></i> Reports</h2>
+            <p>View and download financial reports.</p>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="fas fa-file-pdf"></i>
+                    <h2>Financial Reports</h2>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Monthly Financial Report</div>
+                    <button class="btn-dashboard btn-primary" style="padding: 8px 15px;">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Annual Tax Summary</div>
+                    <button class="btn-dashboard btn-primary" style="padding: 8px 15px;">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Settings Section -->
+        <div class="dashboard-section" id="settings-section">
+            <h2 class="section-title"><i class="fas fa-cog"></i> Settings</h2>
+            <p>Configure your account settings.</p>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="fas fa-user-cog"></i>
+                    <h2>Account Settings</h2>
+                </div>
+                <div class="form-group">
+                    <label>Notification Preferences</label>
+                    <select>
+                        <option>Email and App Notifications</option>
+                        <option>Email Only</option>
+                        <option>App Only</option>
+                        <option>No Notifications</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Currency Preferences</label>
+                    <select>
+                        <option>US Dollar (USD)</option>
+                        <option>Euro (EUR)</option>
+                        <option>British Pound (GBP)</option>
+                        <option>Japanese Yen (JPY)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashboard-footer">
+            <p>&copy; 2023 Global Financial Advisor | Your personal finance companion</p>
+        </div>
+    </div>
+
+
+    <script src="server.js"></script>
+
+</body>
+</html>
